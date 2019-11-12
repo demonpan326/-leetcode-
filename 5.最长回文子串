@@ -1,3 +1,11 @@
+实践过程中，要注意，string的越界问题，不止要在第一层循环中注意，第二层的循环也要注意。
+算法中最主要部分的原理：
+mx 代表以 id 为中心的最长回文的右边界，比如abbce,那么mx就是e的index。id代表最长回文子串的中心位置
+if (i < mx)  
+    p[i] = min(p[2 * id - i], mx - i);
+![](https://segmentfault.com/img/remote/1460000014416801?w=590&h=190)
+
+# 代码
 class Solution(object):
     def longestPalindrome(self, s):
         ss=''
