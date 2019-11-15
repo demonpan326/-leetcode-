@@ -48,6 +48,8 @@ class Solution(object):
 ```python
 class Solution(object):
     def convert(self, s, numRows):
+        if numRows==1:
+            return s
         size=len(s)
         direction=-1
         string=[]
