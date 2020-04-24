@@ -1,0 +1,31 @@
+class Solution(object):
+    def longestValidParentheses(self, s):
+        stack = []
+        n = len(s)
+        if n == 0 or n == 1:
+            return 0
+        summ = []
+        for i in range(n):
+            if stack and s[i] == ')' and s[stack[-1]] == '(':
+                summ.append(stack[-1])
+                summ.append(i)
+                stack.pop()
+            else:
+                stack.append(i)
+        dui = 0
+        x = 0
+        summ.sort()
+        if len(summ)!=0:
+            i = 1
+            dui=1
+            while i < len(summ):
+                if summ[i-1] == (summ[i ]-1) :
+                    i =i+1
+                    dui += 1
+                else:
+                    x = max(x, dui)
+                    dui = 1
+                    i=i+1
+        x = max(x, dui)
+
+        return x
