@@ -22,3 +22,27 @@ class Solution(object):
         back(temp,candidates,target)
         return out
 回溯法，+剪枝，注意14.15行去除重复元素
+
+
+47.全排列题目，也是类似想法
+class Solution(object):
+    def permuteUnique(self, nums):
+       
+        out=[]
+        temp=[]
+        nums.sort()
+        nums.append(-1)
+        size=len(nums)
+        def back(nums,temp,size):
+            if nums==[-1]:
+                out.append(temp[:])
+                return
+            for i in range(len(nums)-1):
+                if i>0 and nums[i]==nums[i-1]:
+                    continue
+                temp.append(nums[i])
+                back(nums[0:i]+nums[i+1:],temp,size)
+                temp.pop()
+        back(nums,temp,size)
+        return out
+ 注意，排序的重要性，去重复
